@@ -1,8 +1,8 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule} from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { PrimaryButtonComponent } from '../../components/primary-button/primary-button.component';
-import { CartService } from '../../services/cart.service';
+import { Router, RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +10,21 @@ import { CartService } from '../../services/cart.service';
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
       <div class="bg-white p-8 rounded-lg shadow-lg w-96">
         <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
-        <form (submit)="onSubmit()">
+        <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
           <div class="mb-4">
-            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-            <input type="email" id="email" [(ngModel)]="email" name="email"
+            <label for="email" class="block text-gray-700 font-medium mb-2">Username</label>
+            <input type="text" id="email" [(ngModel)]="user.username" name="email"
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
               required />
           </div>
           <div class="mb-4">
             <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
-            <input type="password" id="password" [(ngModel)]="password" name="password"
+            <input type="password" id="password" [(ngModel)]="user.password" name="password"
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required />
           </div>
-          <button type="submit" routerLink="/plist"
+          <p *ngIf="errorMessage" class="mt-4 text-red-500 text-center mb-2">{{ errorMessage }}</p>
+          <button onsubmit=""
             class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300">
             Login
           </button>
@@ -35,20 +36,31 @@ import { CartService } from '../../services/cart.service';
     </div>
   `,
   styles: [``],
-  imports: [FormsModule,RouterLink,PrimaryButtonComponent]
+  imports: [FormsModule,RouterLink,NgIf]
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
+  user = {
+    username: '',
+    password: '',
+  };
+  errorMessage: string | null = null; // Property to hold error messages
+
+  authService = inject(AuthService);
+  
+  constructor( private router: Router){}
 
   onSubmit() {
-    console.log('Email:', this.email, 'Password:', this.password);
+    this.authService.login(this.user).subscribe({
+      next: (response: any) => {
+        console.log('Login successful:', response);
+        
+        this.authService.setToken(response.token);
+        this.router.navigate(['/plist']);
+      },
+      error: (error) => {
+        console.error('Login failed:', error);
+        this.errorMessage = 'Login failed. Please try again.'; // Set error message
+      },
+    });
   }
-
-
-  cartService = inject(CartService);
-  cartLabel = computed(() => {
-    const cartItems = this.cartService.cart();
-    return `My Cart (${cartItems ? cartItems.length : 0})`;
-  });
 }

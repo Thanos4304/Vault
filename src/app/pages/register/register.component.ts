@@ -56,14 +56,11 @@ import { NgIf } from '@angular/common';
               class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
             />
           </div>
-          <button
-            type="submit"
-            class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-          >
+          <p *ngIf="errorMessage" class="mt-4 text-red-500 text-center mb-2">{{ errorMessage }}</p>
+          <button class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
             Register
           </button>
         </form>
-        <p *ngIf="errorMessage" class="mt-4 text-red-500 text-sm">{{ errorMessage }}</p>
         <p class="mt-4 text-sm text-gray-600">
           Already have an account? <a routerLink="/login" class="text-blue-500">Login</a>
         </p>
@@ -91,7 +88,7 @@ export class RegisterComponent {
         console.log('Registration successful:', response);
         
         this.authService.setToken(response.token);
-        this.router.navigate(['/plist']);
+        this.router.navigate(['/']);
       },
       error: (error) => {
         console.error('Registration failed:', error);

@@ -13,7 +13,7 @@ export type Product = {
   selector: 'app-products-list',
   imports: [ProductCardComponent],
   template: `
-    <div class="p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"> <!--for viewing in mobile also good -->
+    <div class="px-20 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"> <!--for viewing in mobile also good -->
       @for (product of products(); track product.id) {
       <app-product-card [product]="product" />
       }

@@ -34,23 +34,21 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
 
-  login(credentials: { email: string; password: string }): Observable<any> {
+  login(credentials: { username: string; password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials);
   }
-
-
 
   logout() {
     this.token = null;
     this.userSubject.next(null);
-    localStorage.removeItem('token'); // Clear token from local storage
-    this.router.navigate(['/login']); // Navigate to login page
+    localStorage.removeItem('access_token'); // ✅ Correct key here
+    this.router.navigate(['/login']);
   }
-
+  
   isAuthenticated(): boolean {
-    return this.token !== null;
+    return this.getToken() !== null; // ✅ Using getToken method
   }
-
+  
   private decodeToken(token: string): any {
     // Implement your token decoding logic here (e.g., using jwt-decode library)
     // This is just a placeholder for demonstration purposes
