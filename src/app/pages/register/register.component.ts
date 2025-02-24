@@ -8,8 +8,8 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-register',
   standalone: true,
-  template: `
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+  template: `   
+      <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300">
       <div class="bg-white p-6 rounded shadow-md w-96">
       <h2 class="text-2xl font-bold mb-4 text-center">Register</h2>
         <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
@@ -61,7 +61,7 @@ import { NgIf } from '@angular/common';
             Register
           </button>
         </form>
-        <p class="mt-4 text-sm text-gray-600">
+        <p class="text-gray-600 text-sm text-center mt-4">
           Already have an account? <a routerLink="/login" class="text-blue-500">Login</a>
         </p>
       </div>

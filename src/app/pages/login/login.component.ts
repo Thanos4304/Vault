@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login',
   template: `
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300">
       <div class="bg-white p-8 rounded-lg shadow-lg w-96">
         <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
         <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
@@ -24,19 +24,19 @@ import { AuthService } from '../../services/auth.service';
               required />
           </div>
           <p *ngIf="errorMessage" class="mt-4 text-red-500 text-center mb-2">{{ errorMessage }}</p>
-          <button onsubmit=""
+          <button type="submit"
             class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300">
             Login
           </button>
         </form>
         <p class="text-gray-600 text-sm text-center mt-4">
-          Don't have an account? <a href="/register" class="text-blue-500 hover:underline">Sign up</a>
+          Don't have an account? <a href="/register" class="text-blue-500">Sign up</a>
         </p>
       </div>
     </div>
   `,
   styles: [``],
-  imports: [FormsModule,RouterLink,NgIf]
+  imports: [FormsModule, RouterLink, NgIf]
 })
 export class LoginComponent {
   user = {
@@ -47,7 +47,7 @@ export class LoginComponent {
 
   authService = inject(AuthService);
   
-  constructor( private router: Router){}
+  constructor(private router: Router) {}
 
   onSubmit() {
     this.authService.login(this.user).subscribe({

@@ -10,8 +10,9 @@ import { RouterLink } from '@angular/router';
   selector: 'app-cart',
   imports: [CartItemComponent, OrderSummaryComponent,ButtonComponent,RouterLink],
   template: `
-    <div class="p-6 flex flex-col gap-4">
-      <h2 class="text-2xl">Shopping cart</h2>
+   <div class="min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 py-10">
+   <div class="p-6 flex flex-col gap-4">
+      <h2 class="text-2xl font-bold">Your Cart 🛒</h2>
 
       @for (item of cartService.cart(); track item.id) {
       <app-cart-item [item]="item" />

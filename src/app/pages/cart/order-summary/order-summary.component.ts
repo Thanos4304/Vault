@@ -1,11 +1,10 @@
 import { Component, computed, inject } from '@angular/core';
 import { CartService } from '../../../services/cart.service';
-import { ButtonComponent } from '../../../components/button/button.component';
-import { PrimaryButtonComponent } from '../../../components/primary-button/primary-button.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-order-summary',
-  imports: [PrimaryButtonComponent],
+  imports: [RouterLink],
   template: `
     <div class="bg-slate-100 p-6 rounded-xl shadow-xl border">
       <h2 class="text-2xl">Order Summary</h2>
@@ -14,8 +13,9 @@ import { PrimaryButtonComponent } from '../../../components/primary-button/prima
           <span class="text-lg">Total</span>
           <span class="text-lg font-bold">{{ '$ ' + total() }}</span>
         </div>
-        <app-primary-button label="Proceed to checkout" />
-      </div>
+        <button class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300" routerLink="/thankyou">Proceed to Checkout
+        </button>
+</div>
     </div>
   `,
   styles: ``,

@@ -13,8 +13,9 @@ export type Product = {
   selector: 'app-products-list',
   imports: [ProductCardComponent],
   template: `
-    <div class="px-20 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"> <!--for viewing in mobile also good -->
-      @for (product of products(); track product.id) {
+    <div class="min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 py-10">
+      <div class="px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    @for (product of products(); track product.id) {
       <app-product-card [product]="product" />
       }
     </div>
@@ -167,3 +168,9 @@ export class ProductsListComponent {
       
   ]);
 }
+
+
+
+
+
+

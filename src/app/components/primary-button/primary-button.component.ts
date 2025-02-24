@@ -5,7 +5,7 @@ import { Component, input, output } from '@angular/core';
   imports: [],
   template: `
     <button
-      class=" bg-blue-500 text-white w-full border px-5 py-2 rounded-xl shadow-md hover:opacity-90"
+      class=" block mx-auto my-2 px-4 py-2 text-md bg-blue-500 text-white font-bold rounded-md shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
       (click)="btnClicked.emit()"
     >
       <span class="text-md">{{ label() }}</span>
@@ -18,3 +18,10 @@ export class PrimaryButtonComponent {
 
   btnClicked = output();
 }
+
+
+
+
+
+   
+       

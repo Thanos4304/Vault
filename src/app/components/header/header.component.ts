@@ -5,15 +5,14 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
 import { DestructiveButtonComponent } from '../destructive-button/destructive-button.component';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
-
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [PrimaryButtonComponent, DestructiveButtonComponent, RouterLink, NgIf],
   template: `
-    <div class="bg-slate-100 px-4 py-3 shadow-md flex justify-between items-center">
+    <div class="bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 px-4 py-3 shadow-md flex justify-between items-center">
       <button
-        class="text-2xl font-bold text-gray-800 hover:text-blue-600"
+        class="text-3xl font-bold text-black hover:text-white"
         routerLink="/"
         aria-label="Go to home"
       >
@@ -43,7 +42,6 @@ import { NgIf } from '@angular/common';
         </ng-template>
       </div>
     </div>
-    <hr class="border-t border-gray-300" />
   `,
   styles: [],
 })
@@ -54,7 +52,7 @@ export class HeaderComponent {
 
   cartLabel = computed(() => {
     const cartItems = this.cartService.cart();
-    return `My Cart (${cartItems ? cartItems.length : 0})`;
+    return `🛒 My Cart [${cartItems ? cartItems.length : 0}]`;
   });
 
   isLoggedIn = () => this.authService.isAuthenticated();
