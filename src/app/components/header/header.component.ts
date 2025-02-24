@@ -18,12 +18,15 @@ import { NgIf } from '@angular/common';
       >
         Vouge Vault
       </button>
+     
       <div class="flex items-center space-x-4">
+      <ng-container *ngIf="isLoggedIn();">
         <app-primary-button
           label="{{ cartLabel() }}"
           routerLink="/cart"
           aria-label="View cart"
         />
+      </ng-container>
 
         <!-- Conditional rendering based on auth state -->
         <ng-container *ngIf="isLoggedIn(); else loginTemplate">

@@ -49,7 +49,7 @@ import { RouterLink } from '@angular/router';
       <li>✔ Home Goods: 20% off on kitchen appliances</li>
       <li>✔ Seasonal Sale: Extra 10% off on clearance items</li>
     </ul>
-    <p class="mt-4 font-bold"><br>Hurry, these offers are valid for a limited time only! 👀 Don't miss out!</p>
+    <p class="mt-4 font-bold"><br>Hurry, these offers are valid for a limited time only!</p>
     <!-- <button
       class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
       routerLink="/plist"
