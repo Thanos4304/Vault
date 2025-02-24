@@ -13,8 +13,9 @@ import { RouterLink } from '@angular/router';
     <p class="text-lg text-black-600">
       We appreciate your business and hope you enjoy your purchase!
     </p>
-    <p class="text-lg text-black-600 mt-2">
+    <p class="text-lg text-black-600 mt-2 px-2 py-2">
       If you have any questions, feel free to contact us at:
+      contactus&#64;outlook.com
     </p>
     <!-- <p class="text-lg text-gray-600 font-semibold">
       <class="text-blue-500">support@mail.com</a>
