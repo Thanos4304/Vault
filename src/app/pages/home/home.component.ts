@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [NgIf],
   template: `
       <div class="min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 p-6">
        <h1 class="text-gray-900 text-center text-4xl font-bold mb-4 ">
@@ -11,8 +13,9 @@ import { RouterLink } from '@angular/router';
        </h1>
        <p class="text-center text-lg text-black-800 mb-6 font-semibold">
          🛍️ Shop the best products at unbeatable prices!</p>
-      <button class="block mx-auto my-5 px-6 py-3 text-lg bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
-       routerLink="/login"> 🚀 Shop Now</button>
+      <button (click)="onShopNow()" 
+      class="block mx-auto my-5 px-6 py-3 text-lg bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
+       🚀 Shop Now</button>
 
        <!-- about us begins here -->
        <section class="bg-gradient-to-r from-green-100 via-blue-100 to-purple-100 p-6 rounded-lg shadow-lg mb-6">
@@ -151,7 +154,24 @@ import { RouterLink } from '@angular/router';
   `,
   styles: [],
 })
-export class HomeComponent {}
+
+export class HomeComponent {
+  authService = inject(AuthService);
+  router = inject(Router);
+
+  onShopNow() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/plist']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  isLoggedIn() {
+    return this.authService.isAuthenticated();
+  }
+}
+ 
 
 
 
@@ -173,9 +193,8 @@ export class HomeComponent {}
 
 
 
-
-
-
+ 
+   
 
 
 

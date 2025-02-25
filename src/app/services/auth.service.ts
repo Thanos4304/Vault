@@ -55,3 +55,4 @@ export class AuthService {
     return JSON.parse(atob(token.split('.')[1])); // Decode the payload
   }
 }
+
