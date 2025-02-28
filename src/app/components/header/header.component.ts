@@ -5,12 +5,21 @@ import { PrimaryButtonComponent } from '../primary-button/primary-button.compone
 import { DestructiveButtonComponent } from '../destructive-button/destructive-button.component';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
+
+
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [PrimaryButtonComponent, DestructiveButtonComponent, RouterLink, NgIf],
+  imports: [
+    PrimaryButtonComponent,
+    DestructiveButtonComponent,
+    RouterLink,
+    NgIf,
+  ],
   template: `
-    <div class="bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 px-4 py-3 shadow-md flex justify-between items-center">
+    <div
+      class="bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 px-4 py-3 shadow-md flex justify-between items-center"
+    >
       <button
         class="text-3xl font-bold text-black hover:text-white"
         routerLink="/"
@@ -18,15 +27,23 @@ import { NgIf } from '@angular/common';
       >
         Vouge Vault
       </button>
-     
+
       <div class="flex items-center space-x-4">
-      <ng-container *ngIf="isLoggedIn();">
-        <app-primary-button
-          label="{{ cartLabel() }}"
-          routerLink="/cart"
-          aria-label="View cart"
-        />
-      </ng-container>
+        <ng-container *ngIf="isLoggedIn()">
+          <app-primary-button
+            label="{{ cartLabel() }}"
+            routerLink="/cart"
+            aria-label="View cart"
+          />
+          <!-- Icon-like button -->
+          <button
+            class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-gray-100 transition duration-200 ease-in-out border border-gray-300"
+            aria-label="User Profile"
+            routerLink="/profile"
+          >
+            <i>👤</i>
+          </button>
+        </ng-container>
 
         <!-- Conditional rendering based on auth state -->
         <ng-container *ngIf="isLoggedIn(); else loginTemplate">

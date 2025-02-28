@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [NgIf],
+  imports: [NgIf,RouterLink],
   template: `
       <div class="min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 p-6">
        <h1 class="text-gray-900 text-center text-4xl font-bold mb-4 ">
@@ -74,7 +74,7 @@ import { NgIf } from '@angular/common';
     <p class="mt-4 font-bold"><br>Be the first to grab these exciting new products!</p>
     <!-- <button
       class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-      routerLink="/plist"
+      routerLink="newarr"
     >
       Shop New Arrivals
     </button> -->
@@ -93,7 +93,7 @@ import { NgIf } from '@angular/common';
     <p class="mt-4 font-bold"><br>Join the trend and see what everyone is raving about!</p>
     <!-- <button
       class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-      routerLink="/plist"
+      routerLink=""
     >
       View Best Sellers
     </button> -->

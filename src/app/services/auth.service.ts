@@ -1,8 +1,8 @@
-// auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +14,25 @@ export class AuthService {
   user$ = this.userSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {
-    // Check for token in local storage on initialization
-    this.token = localStorage.getItem('token');
+    // Check for token and username in local storage on initialization
+    this.token = localStorage.getItem('access_token');
+    const storedUsername = localStorage.getItem('username');
+
     if (this.token) {
-      // Optionally, you can decode the token to get user info and set it
       this.userSubject.next(this.decodeToken(this.token));
+    }
+
+    if (storedUsername) {
+      this.userSubject.next({ username: storedUsername });
     }
   }
 
   setToken(token: string): void {
     this.token = token;
     localStorage.setItem('access_token', token);
+    this.userSubject.next(this.decodeToken(token)); // Update user info
   }
+
   getToken(): string | null {
     return this.token || localStorage.getItem('access_token');
   }
@@ -35,24 +42,36 @@ export class AuthService {
   }
 
   login(credentials: { username: string; password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials);
+    return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
+      tap((response: any) => {
+        this.setToken(response.token); // Assuming the response contains a token
+        localStorage.setItem('username', credentials.username); // Store username
+        this.userSubject.next({ username: credentials.username }); // Update user state
+      })
+    );
   }
 
   logout() {
     this.token = null;
     this.userSubject.next(null);
-    localStorage.removeItem('access_token'); // ✅ Correct key here
+    localStorage.removeItem('access_token'); // Remove token
+    localStorage.removeItem('username'); // Remove username
     this.router.navigate(['/login']);
   }
-  
+
   isAuthenticated(): boolean {
-    return this.getToken() !== null; // ✅ Using getToken method
+    return this.getToken() !== null;
   }
-  
+
+  getUsername(): string | null {
+    return localStorage.getItem('username');
+  }
+
   private decodeToken(token: string): any {
-    // Implement your token decoding logic here (e.g., using jwt-decode library)
-    // This is just a placeholder for demonstration purposes
-    return JSON.parse(atob(token.split('.')[1])); // Decode the payload
+    try {
+      return JSON.parse(atob(token.split('.')[1])); // Decode JWT payload
+    } catch (e) {
+      return null;
+    }
   }
 }
-

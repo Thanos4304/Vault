@@ -28,10 +28,10 @@ import { PrimaryButtonComponent } from '../../../components/primary-button/prima
 
       <span
         class="absolute top-2 right-3 text-sm font-bold"
-        [class]="product().stock ? 'text-green-500' : 'text-red-500'"
+        [class]="product().stock ? 'text-green-500' : 'text-green-500'"
       >
         @if (product().stock) {
-        {{ product().stock }} left } @else { Out of stock }
+        {{ product().stock }} left } @else { 1 left }
       </span>
     </div>
   `,
