@@ -7,6 +7,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ThankYouComponent } from './pages/thankyou/thankyou.component';
 import { NewArrivalsComponent } from './pages/newarrivals/newarrivals.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ViewProdComponent } from './pages/viewprod/viewprod.component';
 
 export const routes: Routes = [
   {
@@ -41,5 +42,9 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+  },
+  {
+    path: 'viewprod',
+    component: ViewProdComponent,
   } 
 ];
