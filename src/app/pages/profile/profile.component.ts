@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 
         <!-- Welcome Message -->
         <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200 mt-4">Welcome, {{ username }}</h1>
+        <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200 mt-4">{{ email }}</h1>
 
         <div *ngIf="!username" class="text-red-500 mt-2">
           <p>No user information available.</p>
@@ -45,13 +46,24 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   router = inject(Router);
   username: string | null = '';
+  email: string | null= ' ';
   avatarUrl: string = '';
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.username = this.authService.getUsername();
+    this.authService.getProfile().subscribe({
+      next: (response: any) => {
+        this.username=response['profile']['username'];
+        this.email=response['profile']['email'];
+      },
+      // error: (error) => {
+      //   console.error('Login failed:', error);
+      //   this.errorMessage = 'Login failed. Please try again.'; // Set error message
+      // },
+    })
     this.avatarUrl = `https://i.pravatar.cc/150?u=${this.username}`; // Auto-generated profile pic
+    //this.authService.profile$.subscribe
   }
 
   gotocart() {

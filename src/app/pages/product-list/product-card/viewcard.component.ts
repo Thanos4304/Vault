@@ -14,6 +14,7 @@ import { Product } from '../product-list.component';
         />
       </div>
       <div class="flex flex-col">
+        
         <span class="text-md font-bold">{{ product().title }}</span>
         <span class="text-sm">{{ '$' + product().price }}</span>
       </div>

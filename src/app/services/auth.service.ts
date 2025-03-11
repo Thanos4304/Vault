@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -12,6 +12,9 @@ export class AuthService {
   private token: string | null = null;
   private userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
+  private profileSubject = new BehaviorSubject<any>(null);
+  profile$ = this.userSubject.asObservable();
+
 
   constructor(private http: HttpClient, private router: Router) {
     // Check for token and username in local storage on initialization
@@ -51,7 +54,30 @@ export class AuthService {
     );
   }
 
+  getProfile():Observable<any>{
+    //const baseHeaders = new HttpHeaders().set('authorization',`Bearer ${this.getToken()}`);
+    var header = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`)
+    }
+    return this.http.get(`${this.apiUrl}/profile`,header).pipe(
+      tap((response: any) => {
+        this.profileSubject.next({profile:response.profile});  
+        //console.log(response);
+      })
+    );
+  }
+
   logout() {
+    const cartData = localStorage.getItem('cart');
+    const cartItems = cartData ? JSON.parse(cartData) : []; // Ensure correct parsing
+
+  if (cartItems.length > 0) {
+    alert(  'You have items in your cart! Are you sure you want to logout?' );
+
+    // if (!confirmLogout) {
+    //   return; // Stop logout if user cancels
+    // }
+  }
     this.token = null;
     this.userSubject.next(null);
     localStorage.removeItem('access_token'); // Remove token
