@@ -121,15 +121,18 @@ import { NgIf } from '@angular/common';
         </div>
       </div>
       <div
-        class="bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 p-4 rounded-lg shadow-md"
-      >
-        <button
-          class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          routerLink="/viewprod"
-        >
-          View our Products
-        </button>
-      </div>
+  class="bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 p-4 rounded-lg shadow-md flex justify-center"
+>
+<p class="text-lg text-center text-black mb-2">
+    Explore our exclusive collection of products tailored just for you!
+  </p>
+  <button
+    class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+    routerLink="/viewprod"
+  >
+    View our Products
+  </button>
+</div>
 
       <!-- Customer Testimonials Section -->
 
