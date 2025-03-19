@@ -3,12 +3,15 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api'; // Base URL for the API
+  // private apiUrl = 'http://localhost:3000/api'; // Base URL for the API
+  private apiUrl = environment.apiUrl; // Base URL for the API
+  private isProd = environment.production;
   private token: string | null = null;
   private userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
@@ -45,6 +48,7 @@ export class AuthService {
   }
 
   login(credentials: { username: string; password: string }): Observable<any> {
+    console.log(this.isProd);
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((response: any) => {
         this.setToken(response.token); // Assuming the response contains a token
