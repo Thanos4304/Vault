@@ -15,7 +15,7 @@ export type Product = {
   selector: 'app-viewprod',
   imports: [ViewCardComponent,NgFor],
   template: `
-      <div class="min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 py-10">
+      <div class="min-h-screen bg-FF6DFA py-10">
       <div class="px-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"> 
         <ng-container *ngFor="let product of availableProducts()">
           <app-view-card [product]="product"></app-view-card>

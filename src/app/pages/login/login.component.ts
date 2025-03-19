@@ -7,9 +7,9 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login',
   template: `
-    <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300">
+    <div class="flex items-center justify-center min-h-screen bg-white">
       <div class="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Sign In</h2>
         <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
           <div class="mb-4">
             <label for="email" class="block text-gray-700 font-medium mb-2">Username</label>
@@ -25,7 +25,7 @@ import { AuthService } from '../../services/auth.service';
           </div>
           <p *ngIf="errorMessage" class="mt-4 text-red-500 text-center mb-2">{{ errorMessage }}</p>
           <button type="submit"
-            class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+            class="w-full bg-orange-600 text-white font-semibold py-3 rounded-lg hover:bg-orange-700 transition duration-300">
             Login
           </button>
         </form>

@@ -10,10 +10,15 @@ import { RouterLink } from '@angular/router';
   selector: 'app-cart',
   imports: [CartItemComponent, OrderSummaryComponent,ButtonComponent,RouterLink],
   template: `
-   <div class="min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 py-10">
-   <div class="p-6 flex flex-col gap-4">
-      <h2 class="text-2xl font-bold">Your Cart 🛒</h2>
-
+   <div class="min-h-screen w-sm flex bg-white py-10">
+      <div class="p-6 flex flex-col gap-4"> <!-- Changed to flex-col -->
+        <button 
+        class="block mx-auto my-2 px-4 py-2 text-md bg-orange-500 text-white font-bold rounded-md shadow-lg hover:bg-orange-700 transition-transform transform hover:scale-105"
+        style="margin-left: 10px;"
+        routerLink="/plist"> <!-- Adjust the routerLink to your desired route -->
+          Back
+        </button>
+        <h2 class="text-2xl font-bold">Your Cart 🛒</h2>
       @for (item of cartService.cart(); track item.id) {
       <app-cart-item [item]="item" />
       }
@@ -25,3 +30,14 @@ import { RouterLink } from '@angular/router';
 export class CartComponent {
   cartService = inject(CartService);
 }
+
+
+
+
+
+
+
+
+
+
+

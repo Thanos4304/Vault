@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   selector: 'app-profile',
   imports: [NgIf],
   template: `
-    <div class="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 ">
-      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 w-96 text-center transform transition duration-300 hover:scale-105">
+    <div class="flex justify-center items-center min-h-screen bg-white ">
+      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 w-100 text-center transform transition duration-300 hover:scale-105">
       
         <!-- Profile Image -->
         <div class="flex justify-center">

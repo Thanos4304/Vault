@@ -6,14 +6,14 @@ import { RouterLink } from '@angular/router';
   selector: 'app-order-summary',
   imports: [RouterLink],
   template: `
-    <div class="bg-slate-100 p-6 rounded-xl shadow-xl border">
+    <div class="bg-slate-100 w-sm p-6 rounded-xl shadow-xl border">
       <h2 class="text-2xl">Order Summary</h2>
       <div class="flex flex-col gap-4">
         <div class="flex gap-4">
           <span class="text-lg">Total</span>
           <span class="text-lg font-bold">{{ '$ ' + total() }}</span>
         </div>
-        <button class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300" routerLink="/thankyou">Proceed to Checkout
+        <button class="bg-orange-600 text-white font-semibold py-3 rounded-lg hover:bg-orange-700 transition duration-300" routerLink="/thankyou">Proceed to Checkout
         </button>
 </div>
     </div>
@@ -32,3 +32,6 @@ export class OrderSummaryComponent {
     return total;
   });
 }
+
+
+

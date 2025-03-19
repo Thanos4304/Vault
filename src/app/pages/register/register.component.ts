@@ -9,9 +9,9 @@ import { NgIf } from '@angular/common';
   selector: 'app-register',
   standalone: true,
   template: `   
-      <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300">
+      <div class="flex items-center justify-center min-h-screen bg-white via-pink-300 to-yellow-300">
       <div class="bg-white p-6 rounded shadow-md w-96">
-      <h2 class="text-2xl font-bold mb-4 text-center">Register</h2>
+      <h2 class="text-2xl font-bold mb-4 text-center">Sign Up</h2>
         <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
           <div class="mb-4">
             <label
@@ -57,12 +57,12 @@ import { NgIf } from '@angular/common';
             />
           </div>
           <p *ngIf="errorMessage" class="mt-4 text-red-500 text-center mb-2">{{ errorMessage }}</p>
-          <button class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+          <button class="w-full bg-orange-600 text-white font-semibold py-3 rounded-lg hover:bg-orange-700 transition duration-300">
             Register
           </button>
         </form>
         <p class="text-gray-600 text-sm text-center mt-4">
-          Already have an account? <a routerLink="/login" class="text-blue-500">Login</a>
+          Already have an account? <a routerLink="/login" class="text-blue-500">Sign In</a>
         </p>
       </div>
     </div>

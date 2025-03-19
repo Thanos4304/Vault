@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <button
       (click)="onClick.emit()"
-      class="font-bold bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition"
+      class="font-bold bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-600 transition"
     >
       {{ label }}
     </button>

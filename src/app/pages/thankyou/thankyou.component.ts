@@ -5,7 +5,7 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-thank-you',
   template: `
-    <div class="min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 flex items-center justify-center">
+    <div class="min-h-screen bg-white flex items-center justify-center">
       <div class="bg-white p-8 rounded-lg shadow-lg text-center w-full max-w-2xl">
        
         <!-- Bill Summary -->

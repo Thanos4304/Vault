@@ -8,7 +8,7 @@ import { NgIf } from '@angular/common';
   imports: [NgIf, RouterLink],
   template: `
     <div
-      class="min-h-screen bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 p-6"
+      class="min-h-screen bg-white p-6"
     >
       <h1 class="text-gray-900 text-center text-4xl font-bold mb-4 ">
         Welcome to Vogue Vault
@@ -18,14 +18,13 @@ import { NgIf } from '@angular/common';
       </p>
       <button
         (click)="onShopNow()"
-        class="block mx-auto my-5 px-6 py-3 text-lg bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
-      >
+        class="block mx-auto my-5 px-6 py-3 text-lg bg-orange-600 text-white font-bold rounded-lg shadow-lg hover:bg-orange-700 transition-transform transform hover:scale-105">
         🚀 Shop Now
       </button>
 
       <!-- about us begins here -->
       <section
-        class="bg-gradient-to-r from-green-100 via-blue-100 to-purple-100 p-6 rounded-lg shadow-lg mb-6"
+        class="bg-white p-6 mb-6"
       >
         <h2 class="text-2xl font-bold text-center mb-4">💡 About Us</h2>
         <p class="text-black-700 text-justify text-lg leading-relaxed">
@@ -51,7 +50,7 @@ import { NgIf } from '@angular/common';
       </section>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <!-- Special Offers Section -->
-        <div class="bg-red-200 p-4 rounded-lg shadow-md">
+        <div class="bg-white-200 p-4 rounded-lg ">
           <h2 class="text-xl font-semibold">🔥 Special Offers</h2>
           <p>Get up to 50% off on selected items!</p>
           <ul class="mt-2">
@@ -72,7 +71,7 @@ import { NgIf } from '@angular/common';
         </div>
 
         <!-- New Arrivals Section -->
-        <div class="bg-green-200 p-4 rounded-lg shadow-md">
+        <div class="bg-white-200 p-4 rounded-lg ">
           <h2 class="text-xl font-semibold">🆕 New Arrivals</h2>
           <p>Discover the latest products just added to our store!</p>
           <ul class="mt-2">
@@ -97,7 +96,7 @@ import { NgIf } from '@angular/common';
         </div>
 
         <!-- Best Sellers Section -->
-        <div class="bg-yellow-200 p-4 rounded-lg shadow-md">
+        <div class="bg-white-200 p-4 rounded-lg ">
           <h2 class="text-xl font-semibold">🏆 Best Sellers</h2>
           <p>Check out our most popular products loved by customers!</p>
           <ul class="mt-2">
@@ -121,14 +120,14 @@ import { NgIf } from '@angular/common';
         </div>
       </div>
       <div
-  class="bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 p-4 rounded-lg shadow-md flex justify-center"
+  class="bg-white p-4  flex justify-center"
 >
-<p class="text-lg text-center text-black mb-2">
+<!-- <p class="text-lg text-center text-black mb-2">
     Explore our exclusive collection of products tailored just for you!
-  </p>
+  </p> -->
   <button
-    class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-    routerLink="/viewprod"
+  class="block mx-auto my-5 px-6 py-3 text-lg bg-orange-600 text-white font-bold rounded-lg  hover:bg-orange-700 transition-transform transform hover:scale-105"
+  routerLink="/viewprod"
   >
     View our Products
   </button>
@@ -137,7 +136,7 @@ import { NgIf } from '@angular/common';
       <!-- Customer Testimonials Section -->
 
       <section
-        class="bg-gradient-to-r from-green-100 via-blue-100 to-purple-100 p-6 rounded-lg shadow-lg mb-6"
+        class="bg-white p-6 rounded-lg mb-6"
       >
         <h2 class="text-2xl font-bold text-center mb-4">
           💬 Customer Testimonials

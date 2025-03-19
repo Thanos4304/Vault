@@ -5,7 +5,7 @@ import { Component, input, output } from '@angular/core';
   imports: [],
   template: `
     <button
-      class=" block mx-auto my-2 px-4 py-2 text-md bg-blue-500 text-white font-bold rounded-md shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
+      class=" block mx-auto my-2 px-4 py-2 text-md bg-orange-500 text-white font-bold rounded-md shadow-lg hover:bg-orange-700 transition-transform transform hover:scale-105"
       (click)="btnClicked.emit()"
     >
       <span class="text-md">{{ label() }}</span>

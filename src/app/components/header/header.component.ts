@@ -6,7 +6,6 @@ import { DestructiveButtonComponent } from '../destructive-button/destructive-bu
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
 
-
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -18,15 +17,23 @@ import { NgIf } from '@angular/common';
   ],
   template: `
     <div
-      class="bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-300 px-4 py-3 shadow-md flex justify-between items-center"
+      class="bg-black px-4 py-3 shadow-md flex justify-between items-center"
     >
-      <button
-        class="text-3xl font-bold text-black hover:text-white"
-        routerLink="/"
-        aria-label="Go to home"
-      >
-        Vouge Vault
-      </button>
+      <div class="flex items-center space-x-2">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGn2q-dT6Dhf2yUAfJeoJcJag4Tu6SDRoWEQ&s"
+          alt="Logo"
+          routerLink="/"
+          class="h-10 w-auto hover:orange-700 transition duration-300"
+        />
+        <button
+          class="text-3xl text-center font-bold text-white hover:text-orange-700 transition duration-300"
+          routerLink="/"
+          aria-label="Go to home"
+        >
+          Vogue Vault
+        </button>
+      </div>
 
       <div class="flex items-center space-x-4">
         <ng-container *ngIf="isLoggedIn()">
@@ -35,9 +42,8 @@ import { NgIf } from '@angular/common';
             routerLink="/cart"
             aria-label="View cart"
           />
-          <!-- Icon-like button -->
           <button
-            class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-gray-100 transition duration-200 ease-in-out border border-gray-300"
+            class="flex items-center justify-center w-10 h-10 rounded-full bg-FDFAF6 shadow-md hover:bg-gray-100 transition duration-200 ease-in-out border border-gray-300"
             aria-label="User Profile"
             routerLink="/profile"
           >
@@ -45,7 +51,6 @@ import { NgIf } from '@angular/common';
           </button>
         </ng-container>
 
-        <!-- Conditional rendering based on auth state -->
         <ng-container *ngIf="isLoggedIn(); else loginTemplate">
           <app-destructive-button
             label="Sign Out"
@@ -80,5 +85,4 @@ export class HeaderComponent {
   logout() {
     this.authService.logout();
   }
-  
 }
